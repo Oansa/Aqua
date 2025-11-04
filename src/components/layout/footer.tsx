@@ -57,7 +57,7 @@ const Footer = ({ className, navItems = [] }: FooterProps) => {
                   key={social.label}
                   href={social.href}
                   className="text-white-foam/60 hover:text-primary-aqua transition-colors"
-                  target={blank"
+                  target="_blank"
                   rel="noopener noreferrer"
                   aria-label={social.label}
                   initial={{ opacity: 0, scale: 0.8 }}
