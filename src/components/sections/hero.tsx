@@ -9,7 +9,9 @@ import {
   fadeInVariants,
   slideUpVariants,
   scaleVariants,
-  useInViewAnimation
+  useInViewAnimation,
+  containerVariants,
+  itemVariants
 } from '@/utils/animations'
 
 interface HeroProps {
