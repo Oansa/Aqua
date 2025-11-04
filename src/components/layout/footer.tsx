@@ -1,6 +1,6 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { Github, Twitter, Discord, Mail, Heart } from 'lucide-react'
+import { Github, Twitter, MessageCircle, Mail, Heart } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/utils/helpers'
 import { NavItem } from '@/types'
