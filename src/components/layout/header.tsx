@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X, Github, Twitter, Discord } from 'lucide-react'
+import { Menu, X, Github, Twitter, MessageCircle } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/utils/helpers'
 import { NavItem } from '@/types'
