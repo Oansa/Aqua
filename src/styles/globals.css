@@ -1,0 +1,253 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 8 91 178; /* Deep Teal Base #0891b2 */
+    --foreground: 255 255 255; /* White Foam */
+    --card: 14 116 144; /* Ocean Blue #0e7490 */
+    --card-foreground: 255 255 255;
+    --popover: 8 91 178; /* Deep Teal Base */
+    --popover-foreground: 255 255 255;
+    --primary: 6 182 212; /* Primary Aqua #06b6d4 */
+    --primary-foreground: 255 255 255;
+    --secondary: 14 116 144; /* Ocean Blue */
+    --secondary-foreground: 255 255 255;
+    --muted: 20 184 166; /* Seafoam #14b8a6 */
+    --muted-foreground: 255 255 255;
+    --accent: 34 211 238; /* Bright Aqua #22d3ee */
+    --accent-foreground: 255 255 255;
+    --destructive: 239 68 68; /* Error Red */
+    --destructive-foreground: 255 255 255;
+    --border: 20 184 166; /* Seafoam */
+    --input: 20 184 166; /* Seafoam */
+    --ring: 6 182 212; /* Primary Aqua */
+    --radius: 1rem; /* 16px for fully rounded corners */
+  }
+
+  .dark {
+    --background: 2 6 23;
+    --foreground: 210 210 210;
+    --card: 15 23 42;
+    --card-foreground: 210 210 210;
+    --popover: 15 23 42;
+    --popover-foreground: 210 210 210;
+    --primary: 6 182 212;
+    --primary-foreground: 2 6 23;
+    --secondary: 30 58 138;
+    --secondary-foreground: 210 210 210;
+    --muted: 71 85 105;
+    --muted-foreground: 148 163 184;
+    --accent: 34 211 238;
+    --accent-foreground: 2 6 23;
+    --destructive: 239 68 68;
+    --destructive-foreground: 210 210 210;
+    --border: 71 85 105;
+    --input: 71 85 105;
+    --ring: 6 182 212;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-ocean-blue/20;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-primary-aqua rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-bright-aqua;
+  }
+}
+
+@layer components {
+  /* Fluid gradient backgrounds */
+  .fluid-gradient-primary {
+    background: linear-gradient(135deg, #0891b2 0%, #06b6d4 50%, #22d3ee 100%);
+    background-size: 200% 200%;
+    animation: gradient-shift 8s ease-in-out infinite;
+  }
+
+  .fluid-gradient-secondary {
+    background: linear-gradient(135deg, #0e7490 0%, #14b8a6 50%, #06b6d4 100%);
+    background-size: 200% 200%;
+    animation: gradient-shift 10s ease-in-out infinite reverse;
+  }
+
+  /* Aqua glow effects */
+  .aqua-glow {
+    box-shadow: 0 0 20px rgba(6, 182, 212, 0.3),
+                0 0 40px rgba(6, 182, 212, 0.1);
+    transition: all 0.3s ease;
+  }
+
+  .aqua-glow:hover {
+    box-shadow: 0 0 30px rgba(6, 182, 212, 0.6),
+                0 0 60px rgba(6, 182, 212, 0.3);
+    transform: translateY(-2px);
+  }
+
+  /* Liquid button styles */
+  .btn-liquid {
+    @apply relative overflow-hidden rounded-full;
+    transition: all 0.3s ease;
+  }
+
+  .btn-liquid::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+  }
+
+  .btn-liquid:hover::before {
+    width: 300px;
+    height: 300px;
+  }
+
+  /* Wave text effect */
+  .wave-text {
+    position: relative;
+    display: inline-block;
+  }
+
+  .wave-text::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, #06b6d4, #22d3ee, #67e8f9);
+    animation: wave 2s ease-in-out infinite;
+  }
+
+  /* Ripple effect for cards */
+  .card-ripple {
+    @apply relative overflow-hidden;
+  }
+
+  .card-ripple::before {
+    content: '';
+    position: absolute;
+    top: var(--ripple-y, 50%);
+    left: var(--ripple-x, 50%);
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(34, 211, 238, 0.3), transparent);
+    transform: translate(-50%, -50%);
+    transition: width 0.8s, height 0.8s, opacity 0.8s;
+    pointer-events: none;
+  }
+
+  .card-ripple.ripple-active::before {
+    width: 500px;
+    height: 500px;
+    opacity: 0;
+  }
+
+  /* Glass morphism effect */
+  .glass {
+    background: rgba(14, 116, 144, 0.2);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(34, 211, 238, 0.2);
+  }
+
+  /* Bubble container */
+  .bubble-container {
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Floating animation classes */
+  .float-slow {
+    animation: float 8s ease-in-out infinite;
+  }
+
+  .float-medium {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .float-fast {
+    animation: float 4s ease-in-out infinite;
+  }
+}
+
+@layer utilities {
+  /* Text shadow for readability on gradient backgrounds */
+  .text-shadow-aqua {
+    text-shadow: 0 2px 4px rgba(8, 91, 178, 0.5);
+  }
+
+  .text-shadow-strong {
+    text-shadow: 0 4px 8px rgba(8, 91, 178, 0.8);
+  }
+
+  /* Focus states with aqua theme */
+  .focus-aqua {
+    @apply focus:outline-none focus:ring-2 focus:ring-primary-aqua focus:ring-offset-2 focus:ring-offset-deep-teal;
+  }
+
+  /* Transitions */
+  .transition-liquid {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .transition-wave {
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+/* Responsive typography */
+@media (max-width: 640px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 1024px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
